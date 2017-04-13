@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head lang="en">
+<title>浦发银行信用卡激活</title>
+<meta charset="UTF-8" />
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
+<meta http-equiv="description" content="this is my page" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimun-scale=1.0,maximum-scale=1.0" />
+
+<link rel="stylesheet" th:href="@{js/common/jqmobile/jquery.mobile-1.2.0.min.css}" />
+<script type="text/javascript" charset="utf-8" th:src="@{js/common/jquery/jquery-1.8.3.js}"></script>
+<script type="text/javascript" charset="utf-8" th:src="@{js/common/js/validata.js}"></script>
+<script type="text/javascript" charset="utf-8" th:src="@{js/cardactivate/cardjihuo.js}"></script>
+<script type="text/javascript" charset="utf-8">
+
+	$(document).ready(function() {
+            $("#hidden1,#hidden2,#hidden3,#hidden4,#hidden5,#hidden6,#hidden7,#hidden8").hide();
+			$("select").change(function() {
+				if ($(this).val() != 0) {
+					$(this).css({
+						"color" : "#333"
+					});
+				} else {
+					$(this).css({
+						"color" : "#c6c4ca"
+					});
+				}
+			});
+
+    });
+    
+	$(function() {
+		document.addEventListener('WeixinJSBridgeReady',
+				function onBridgeReady() {
+					WeixinJSBridge.call('hideToolbar');
+				});
+	});
+
+	document.addEventListener('AlipayJSBridgeReady', function() {
+		AlipayJSBridge.call("hideOptionMenu");
+	}, false);
+</script>
+
+
+
+<style type="text/css">
+body {
+	margin: 0px;
+	font-family: '微软雅黑', "宋体";
+	font-size: 14px
+}
+
+.head {
+	border-bottom: solid #0298F7 2px;
+	padding: 10px 0 10px 0;
+	position: relative;
+	margin-bottom: 10px
+}
+
+.logo {
+	margin: 0px auto;
+	text-align: center;
+}
+
+.logo img {
+	width: 175px;
+}
+
+.text {
+	text-align: center;
+	font-size: 20px;
+	margin-top: 10px;
+	color: #04B1FD
+}
+
+.head a {
+	position: absolute;
+	top: 18px;
+	left: 5px
+}
+
+.head a img {
+	width: 40px
+}
+
+.table {
+	width: 98%;
+	margin: 0px auto;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.table tr {
+	height: 35px
+}
+
+.table td img {
+	width: 25px;
+}
+
+.td1 {
+	white-space: nowrap;
+	color: #666;
+	border-bottom: dashed #ddd 1px;
+	padding-left: 2px;
+}
+
+.td2 {
+	border-bottom: dashed #ddd 1px
+}
+
+.td2 input {
+	width: 98%;
+	border: 0px;
+	height: 25px;
+	font-size: 14px;
+}
+
+.td2 select {
+	border: 0px solid #ddd;
+	background: none;
+	height: 25px;
+	width: 98%;
+	color: #c6c4ca;
+	font-family: '微软雅黑', "宋体";
+	font-size: 14px;
+	word-break: "break-all"
+}
+
+.tdd {
+	border-bottom: dashed #ddd 1px
+}
+
+.label {
+	position: absolute;
+	right: 5px;
+	top: 3px;
+	background: url('images/xiala.png') no-repeat;
+	background-size: 100% 100%;
+	width: 18px;
+	height: 12px;
+}
+
+.td3 {
+	background: url('images/bg_btn.png');
+	background-size: 100% 100%;
+	border: 0px;
+	height: 25px;
+	width: 58px;
+	font-size: 12px;
+	color: #66DDDD;
+}
+
+.td4 {
+	width: 55px
+}
+
+.send {
+	background: url('images/bg_btn.png');
+	background-size: 100% 100%;
+	border: 0px;
+	height: 25px;
+	width: 58px;
+	font-size: 12px;
+	color: #66DDDD;
+}
+
+.betan {
+	background: url('images/betd.png');
+	background-size: 100% 100%;
+	border: 0px;
+	color: #fff;
+	height: 37px;
+	width: 200px;
+	font-size: 16px;
+}
+
+#logo {
+	height: 36px;
+	width: 28px;
+	margin: 0px auto;
+	text-align: center;
+}
+
+#logo img {
+	width: 28px;
+}
+
+.middle {
+	padding: 10px 0 10px 0;
+	position: relative;
+	margin-bottom: 10px
+}
+</style>
+
+</head>
+<body>
+	<div class="head">
+		<div class="logo">
+			<img th:src="@{images/pufalogo.png}" />
+		</div>
+		<div class="text">浦发银行信用卡激活</div>
+	</div>
+	<div data-role="fieldcontain">
+		<table cellpadding="0" cellspacing="0" class="table">
+			<tr>
+				<td width="34">
+				    <img th:src="@{images/ddss.png}" />
+				</td>
+				<td width="65" class="td1">卡号：</td>
+				<td class="td2">
+				    <input type="text" maxlength="20" name="cardNum" id="cardNum" value="" placeholder="请输入卡号" />
+				</td>
+				<td width="50">
+				    <input type="hidden" id="openId" name="openId" th:value="${openId}" />
+				    <input type="button" id="next" name="next" value="&nbsp;&nbsp;下一步" class="td3" />
+				</td>
+			</tr>
+			<tr id="hidden1">
+				<td>
+				    <img th:src="@{images/icon_star.png}" />
+				</td>
+				<td class="td1">证件类型：</td>
+				<td class="td2">
+					<div for="cardType" style="overflow:hidden;position:relative">
+				    <select name="cardType" id="cardType" style="width: 98%">
+						<option value="">请选择</option>
+						<option value="01">18位身份证</option>
+						<option value="02">15位身份证</option>
+						<option value="03">军官证、警官证</option>
+						<option value="04">台湾居民通行证号</option>
+						<option value="05">港澳居民通行证</option>
+						<option value="06">其他证件（特殊号）</option>
+						<option value="07">香港居民通行证</option>
+						<option value="08">澳门居民通行证</option>
+						<option value="09">护照</option>
+					</select><label for="cardType" class="label"></label>
+				    </div>
+                </td>
+                <td></td>
+			</tr>
+			<tr id="hidden2">
+				<td>
+				    <img th:src="@{images/icon_text.png}" />
+				</td>
+				<td class="td1">证件号码：</td>
+				<td class="td2">
+				    <input type="text" maxlength="18" name="zjhm" id="zjhm" value="" placeholder="请输入证件号码" />
+				</td>
+				<td></td>
+			</tr>
+			<tr id="hidden3">
+				<td><img th:src="@{images/icon_info.png}" />
+				</td>
+				<td class="td1">卡片有效期：</td>
+				<td class="td2">
+				    <input type="text" maxlength="11" name="yy" id="yy" placeholder="年" value="" style="width:28%;border:0px;height:25px;text-align:center;" />
+				    — 
+					<input type="text" maxlength="11" name="mm" id="mm" value="" placeholder="月" style="width:28%;border:0px;height:25px;text-align:center;" />
+				</td>
+				<td><span style="font-size:12px;">(YY-MM)</span></td>
+			</tr>
+			<tr id="hidden4">
+				<td><img th:src="@{images/icon_cvv2.png}" style="height:14px;width:20px;margin-left:1px" />
+				</td>
+				<td class="td1">CVV2：</td>
+				<td class="td2"><input type="text" maxlength="11" name="cvv2" id="cvv2" value="" placeholder="请输入cvv2" /></td>
+				<td></td>
+			</tr>
+			<tr id="hidden5">
+				<td></td>
+				<td colspan="2" class="td1">*CVV2为您卡片背面签名栏末3位数字</td>
+				<td></td>
+			</tr>
+			<tr id="hidden6">
+				<td><img th:src="@{images/icon_mima.png}" />
+				</td>
+				<td class="td1">动态密码：</td>
+				<td class="td2"><input type="text" maxlength="20" name="dtmm" id="dtmm" value="" placeholder="请输入动态密码" /></td>
+				<td><input type="button" id="getpass" name="getpass" value="&nbsp;&nbsp;获取" class="send" /></td>
+			</tr>
+
+		</table>
+		<div id="hidden7" data-role="fieldcontain" style="text-align: center;margin-bottom:10px;margin-top:10px;">
+			<input id="send" name="send" type="button" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提&nbsp;&nbsp;交"
+				class="betan" />
+		</div>
+
+		<div id="hidden8" data-role="fieldcontain" style="text-align:center;margin-bottom:10px;margin-top:10px;color:#EA0B25">
+			非常抱歉，目前您的卡片无法通过自助渠道激活。若需激活卡片，请拨打<a href="tel:400-820-8788">400-820-8788</a>获得帮助。
+		</div>
+	</div>
+	<div class="middle" style="margin-left:18px;margin-right:18px;">
+		<br /> 您可算来了，小浦在这儿恭候多时啦，快快激活信用卡吧~<br />
+		<br />
+        <br />
+        <strong style="font-size: 17px;font-wight:bolder;">小浦支招</strong>
+        <br />
+		信用卡有效期在信用卡正面，卡号下方右边带有“/”的数字，卡面上的格式为（月/年）。而支付宝服务窗激活时，填写有效期的格式为（年-月），稍后您操作时可要留意先后顺序哟~
+		<br />
+		<br />
+		<table>
+			<tr>
+				<td width="28px"><img id="logo" th:src="@{images/reminder.jpg}" /></td>
+				<td><strong style="font-size: 17px;font-wight:bolder;">小浦温馨提示</strong>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">激活完成后，别忘了用预留手机拨打信用卡背面客服热线确认凭密功能状态及设置交易密码噢！</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
